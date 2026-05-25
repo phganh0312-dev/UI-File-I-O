@@ -8,7 +8,6 @@ from datetime import datetime, timedelta
 fake = Faker('vi_VN')
 
 def generate_complex_mock_data():
-    print("Bắt đầu sinh dữ liệu siêu thực tế theo chuẩn CGV...")
 
     # ==========================================
     # 1. SINH DỮ LIỆU USERDATA (10 Admins + 8000 Users)
@@ -33,7 +32,7 @@ def generate_complex_mock_data():
         writer = csv.writer(f)
         writer.writerow(["username", "password", "role"])
         writer.writerows(users)
-    print("Đã sinh xong 8.010 Users với mật khẩu ngẫu nhiên!")
+    print("Đã sinh xong 8.010 Users với mật khẩu ngẫu nhiên")
 
     # ==========================================
     # 2. KHỞI TẠO DANH MỤC 60 PHIM (45 Việt - 15 Ngoại)
@@ -202,7 +201,7 @@ def generate_complex_mock_data():
         writer.writerow(["movie_id", "title", "genre", "revenue"])
         writer.writerows(movies)
         
-    print(f"Hoàn tất! Đã sinh {len(tickets)} giao dịch vé chuẩn xác.")
+    print(f"Đã sinh {len(tickets)} giao dịch vé chuẩn xác.")
 
 if __name__ == "__main__":
     generate_complex_mock_data()
