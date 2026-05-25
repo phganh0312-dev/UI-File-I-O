@@ -1,18 +1,45 @@
-# HỆ THỐNG ĐẶT VÉ XEM PHIM
-Bài tập lớn môn Cấu trúc dữ liệu & Giải thuật - Đại học Bách Khoa Hà Nội
-
-Mã học phần: MI3060
-
-Mã lớp: 169307
-## 1. Thông tin nhóm sinh viên
-* Hồ Hồng Anh - 202419024
-* Lê Thị Lan Anh - 202419032
-* Vũ Phương Anh - 202419026
-* Phạm Thị Ngọc Ánh - 202419034
-* Nguyễn Như Nguyệt Hà - 202419052
-## 2. Cấu trúc mã nguồn
-* haha
-## 3. Mô tả tổng quan hệ thống
-Hệ thống đặt vé xem phim gồm các chức năng chính:
-
-* hihi
+movie_booking_system/
+│
+├── app.py                     # Chạy Streamlit
+├── requirements.txt
+│
+├── data/
+│   ├── users.csv
+│   ├── movies.csv
+│   ├── tickets.csv
+│   ├── showtimes.csv
+│
+├── interface/
+│   ├── menu.py
+│   ├── login_page.py
+│   ├── register_page.py
+│   ├── movie_page.py
+│   ├── booking_page.py
+│   ├── history_page.py
+│   └── admin_page.py
+│
+├── models/
+│   ├── user.py
+│   ├── movie.py
+│   ├── ticket.py
+│   └── showtime.py
+│
+├── datastructures/
+│   ├── linkedlist.py
+│   ├── hashtable.py
+│   └── seat_matrix.py
+│
+├── services/
+│   ├── auth_service.py
+│   ├── movie_service.py
+│   ├── booking_service.py
+│   ├── admin_service.py
+│   └── statistic_service.py
+│
+├── utils/
+│   ├── csv_handler.py
+│   ├── validator.py
+│   └── helper.py
+│
+└── assets/
+    └── cinema_logo.png
