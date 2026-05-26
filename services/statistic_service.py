@@ -1,49 +1,136 @@
-# services/statistic_service.py
-
-from collections import Counter
-
 from utils.csv_handler import CSVHandler
+
+
+MOVIE_FILE="data/movies.csv"
 
 
 class StatisticService:
 
-    def revenue(self):
+    def quicksort(
 
-        tickets=CSVHandler.load_csv(
-            "data/tickets.csv"
+        self,
+
+        movies
+
+    ):
+
+        if len(movies)<=1:
+
+            return movies
+
+        pivot=(
+
+            int(
+
+                movies[0]
+
+                ["revenue"]
+
+            )
         )
 
-        total=sum(
+        left=[]
 
-            int(ticket["price"])
+        right=[]
 
-            for ticket in tickets
+        equal=[]
+
+        for movie in movies:
+
+            revenue=int(
+
+                movie["revenue"]
+
+            )
+
+            if revenue>pivot:
+
+                left.append(
+
+                    movie
+
+                )
+
+            elif revenue<pivot:
+
+                right.append(
+
+                    movie
+
+                )
+
+            else:
+
+                equal.append(
+
+                    movie
+
+                )
+
+        return (
+
+            self.quicksort(
+
+                left
+
+            )
+
+            +
+
+            equal
+
+            +
+
+            self.quicksort(
+
+                right
+
+            )
 
         )
-
-        return total
-
 
     def hot_movies(self):
 
-        tickets=CSVHandler.load_csv(
-            "data/tickets.csv"
+        movies=(
+
+            CSVHandler.load(
+
+                MOVIE_FILE
+
+            )
         )
 
-        counter=Counter(
+        return (
 
-            ticket["movie"]
+            self.quicksort(
 
-            for ticket in tickets
+                movies
 
+            )
         )
 
-        return sorted(
+    def total_revenue(self):
 
-            counter.items(),
+        movies=(
 
-            key=lambda x:x[1],
+            CSVHandler.load(
 
-            reverse=True
+                MOVIE_FILE
 
+            )
         )
+
+        total=0
+
+        for movie in movies:
+
+            total+=(
+
+                int(
+
+                    movie["revenue"]
+
+                )
+            )
+
+        return total
