@@ -1,37 +1,63 @@
-# datastructures/hashtable.py
-
 class HashTable:
 
-    def __init__(self,size=100):
+    def __init__(self, size=100):
 
-        self.size=size
-        self.table=[[] for _ in range(size)]
+        self.size = size
 
-    def hash_function(self,key):
+        self.table = []
 
-        return hash(key)%self.size
+        for _ in range(size):
 
-    def insert(self,key,value):
+            self.table.append([])
 
-        index=self.hash_function(key)
+    def hash_function(self, key):
 
-        for pair in self.table[index]:
+        return hash(key) % self.size
 
-            if pair[0]==key:
+    def insert(self, key, value):
 
-                pair[1]=value
+        index = self.hash_function(key)
+
+        bucket = self.table[index]
+
+        for pair in bucket:
+
+            if pair[0] == key:
+
+                pair[1] = value
                 return
 
-        self.table[index].append([key,value])
+        bucket.append([key, value])
 
-    def get(self,key):
+    def get(self, key):
 
-        index=self.hash_function(key)
+        index = self.hash_function(key)
 
-        for pair in self.table[index]:
+        bucket = self.table[index]
 
-            if pair[0]==key:
+        for pair in bucket:
+
+            if pair[0] == key:
 
                 return pair[1]
 
         return None
+
+    def exists(self, key):
+
+        return self.get(key) is not None
+
+    def delete(self, key):
+
+        index = self.hash_function(key)
+
+        bucket = self.table[index]
+
+        for i, pair in enumerate(bucket):
+
+            if pair[0] == key:
+
+                bucket.pop(i)
+                return True
+
+        return False
