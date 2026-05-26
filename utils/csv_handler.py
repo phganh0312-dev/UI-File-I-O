@@ -1,66 +1,114 @@
-# utils/csv_handler.py
-
 import csv
 import os
+
 
 class CSVHandler:
 
     @staticmethod
-    def load_csv(file):
+    def load(file_path):
 
-        if not os.path.exists(file):
+        if not os.path.exists(file_path):
 
             return []
 
         with open(
-            file,
-            'r',
-            newline='',
-            encoding='utf-8'
-        ) as f:
 
-            return list(csv.DictReader(f))
+            file_path,
 
+            "r",
+
+            encoding="utf-8",
+
+            newline=""
+
+        ) as file:
+
+            reader = csv.DictReader(file)
+
+            return list(reader)
 
     @staticmethod
-    def save_csv(file,data,headers):
+    def overwrite(
+
+        file_path,
+
+        data,
+
+        headers
+
+    ):
 
         with open(
-            file,
-            'w',
-            newline='',
-            encoding='utf-8'
-        ) as f:
 
-            writer=csv.DictWriter(
-                f,
+            file_path,
+
+            "w",
+
+            encoding="utf-8",
+
+            newline=""
+
+        ) as file:
+
+            writer = csv.DictWriter(
+
+                file,
+
                 fieldnames=headers
+
             )
 
             writer.writeheader()
 
             writer.writerows(data)
 
-
     @staticmethod
-    def append_csv(file,data,headers):
+    def append(
 
-        exists=os.path.exists(file)
+        file_path,
 
-        with open(
-            file,
-            'a',
-            newline='',
-            encoding='utf-8'
-        ) as f:
+        row,
 
-            writer=csv.DictWriter(
-                f,
-                fieldnames=headers
+        headers
+
+    ):
+
+        file_exists = os.path.exists(file_path)
+
+        write_header = True
+
+        if file_exists:
+
+            write_header = (
+
+                os.path.getsize(file_path)
+
+                == 0
+
             )
 
-            if not exists:
+        with open(
+
+            file_path,
+
+            "a",
+
+            encoding="utf-8",
+
+            newline=""
+
+        ) as file:
+
+            writer = csv.DictWriter(
+
+                file,
+
+                fieldnames=headers
+
+            )
+
+            if write_header:
 
                 writer.writeheader()
 
-            writer.writerow(data)
+            writer.writerow(row)
