@@ -11,7 +11,7 @@ Movie-Ticket-Booking-System/
 ├── models/                     # TẦNG 4: DATA MODELS LAYER
 │   └── entities.py             # Chứa toàn bộ các class thực thể (Data Models)
 │
-├── structures/                 # TẦNG 3: DATA ACCESS & STRUCTURES LAYER
+├── data_structures/                 # TẦNG 3: DATA ACCESS & STRUCTURES LAYER
 │   ├── nodes.py                # Chứa các class Node (UserNode, MovieNode...)
 │   ├── linked_lists.py         # Chứa MovieLinkedList, TicketLinkedList...
 │   ├── hash_table.py           # Chứa UserHashTable
