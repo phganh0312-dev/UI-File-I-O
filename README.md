@@ -1,5 +1,5 @@
 CLASS DIAGRAM
-TẦNG 1
+* TẦNG 1
 package "Presentation Layer" {
     class MainMenu {
         + display_menu(): void
@@ -34,9 +34,7 @@ package "Presentation Layer" {
     }
 }
 
-
-
-TẦNG 2
+* TẦNG 2
 package "Business Logic Layer" {
     class AuthController {    
         - user_table: UserHashTable  
@@ -100,10 +98,7 @@ package "Business Logic Layer" {
     }
 }
 
-
-
-
-TẦNG 3
+* TẦNG 3
 package "Data Access & Structures" {
     class FileIOHandler {   
         + load_users(table: UserHashTable&): void
@@ -198,8 +193,7 @@ package "Data Access & Structures" {
     }
 }
 
-
-TẦNG 4:
+* TẦNG 4:
 package "Data Models" {
     class UserData {
         - username: String
